@@ -5,6 +5,9 @@ from loguru import logger
 from tqdm import tqdm
 
 from customer_churn.config import FIGURES_DIR, PROCESSED_DATA_DIR
+import pandas as pd
+import matplotlib.pyplot as plt
+
 
 app = typer.Typer()
 
@@ -12,16 +15,25 @@ app = typer.Typer()
 @app.command()
 def main(
     # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    input_path: Path = PROCESSED_DATA_DIR / "dataset.csv",
-    output_path: Path = FIGURES_DIR / "plot.png",
+    input_path: Path = PROCESSED_DATA_DIR / "../data/processed/dataset.csv",
+    output_path: Path = FIGURES_DIR / "../data/interim/plot.png",
     # -----------------------------------------
 ):
     # ---- REPLACE THIS WITH YOUR OWN CODE ----
-    logger.info("Generating plot from data...")
-    for i in tqdm(range(10), total=10):
-        if i == 5:
-            logger.info("Something happened for iteration 5.")
-    logger.success("Plot generation complete.")
+
+    # Load the dataset
+    data = pd.read_csv(input_path)
+
+    # Generate a simple plot (e.g., histogram of a column named 'feature')
+    plt.figure(figsize=(10, 6))
+    plt.hist(data['feature'], bins=30, alpha=0.75, color='blue')
+    plt.title('Histogram of Feature')
+    plt.xlabel('Feature')
+    plt.ylabel('Frequency')
+
+    # Save the plot to the specified output path
+    plt.savefig(output_path)
+    plt.close()
     # -----------------------------------------
 
 
