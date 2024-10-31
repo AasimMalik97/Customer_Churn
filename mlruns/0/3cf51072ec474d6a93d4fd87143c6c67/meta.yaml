@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Development/Customer_Churn/mlruns/0/3cf51072ec474d6a93d4fd87143c6c67/artifacts
+end_time: 1730388353529
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3cf51072ec474d6a93d4fd87143c6c67
+run_name: funny-sponge-135
+run_uuid: 3cf51072ec474d6a93d4fd87143c6c67
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730388342059
+status: 3
+tags: []
+user_id: Joewk

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Development/Customer_Churn/mlruns/0/61b7eb79b16a4b2b971d9f30690dd8bf/artifacts
+end_time: 1730388486913
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 61b7eb79b16a4b2b971d9f30690dd8bf
+run_name: hilarious-elk-432
+run_uuid: 61b7eb79b16a4b2b971d9f30690dd8bf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730388481074
+status: 3
+tags: []
+user_id: Joewk
