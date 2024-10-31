@@ -7,13 +7,18 @@ from sklearn.metrics import accuracy_score, classification_report
 import typer
 from loguru import logger
 from tqdm import tqdm
+
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[2]))
+
 from customer_churn.config import MODELS_DIR, PROCESSED_DATA_DIR
 
 app = typer.Typer()
 
 @app.command()
 def main(
-    features_path: Path = PROCESSED_DATA_DIR / "features.csv",
+    features_path: Path = PROCESSED_DATA_DIR / "dataset.csv",
     model_path: Path = MODELS_DIR / "model.pkl",
 ):
     # Load the dataset
