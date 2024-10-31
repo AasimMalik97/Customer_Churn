@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Development/Customer_Churn/mlruns/0/7834019d4fb142c7a0dbdd453155289f/artifacts
+end_time: 1730384991525
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7834019d4fb142c7a0dbdd453155289f
+run_name: bold-boar-847
+run_uuid: 7834019d4fb142c7a0dbdd453155289f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730384986926
+status: 3
+tags: []
+user_id: malik

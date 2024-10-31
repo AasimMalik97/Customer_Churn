@@ -7,6 +7,8 @@ from sklearn.metrics import accuracy_score, classification_report
 import typer
 from loguru import logger
 from tqdm import tqdm
+import mlflow
+import mlflow.sklearn
 
 import sys
 
@@ -35,23 +37,33 @@ def main(
     # Split the data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    # Initialize and train the model
-    model = LogisticRegression(max_iter=1000)
-    model.fit(X_train, y_train)
+    # Start MLflow run
+    with mlflow.start_run():
+        # Initialize and train the model
+        model = LogisticRegression(max_iter=1000)
+        model.fit(X_train, y_train)
 
-    # Make predictions
-    y_pred = model.predict(X_test)
+        # Make predictions
+        y_pred = model.predict(X_test)
 
-    # Evaluate the model
-    accuracy = accuracy_score(y_test, y_pred)
-    report = classification_report(y_test, y_pred)
+        # Evaluate the model
+        accuracy = accuracy_score(y_test, y_pred)
+        report = classification_report(y_test, y_pred)
 
-    logger.info(f"Accuracy: {accuracy}")
-    logger.info(f"Classification Report:\n{report}")
+        logger.info(f"Accuracy: {accuracy}")
+        logger.info(f"Classification Report:\n{report}")
 
-    # Save the model
-    joblib.dump(model, model_path)
-    logger.success(f"Model saved to {model_path}")
+        # Log parameters and metrics to MLflow
+        mlflow.log_param("max_iter", 1000)
+        mlflow.log_metric("accuracy", accuracy)
+        mlflow.log_text(report, "classification_report.txt")
+
+        # Log the model to MLflow
+        mlflow.sklearn.log_model(model, "model")
+
+        # Save the model locally
+        joblib.dump(model, model_path)
+        logger.success(f"Model saved to {model_path}")
 
 if __name__ == "__main__":
     app()
